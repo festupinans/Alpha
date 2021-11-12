@@ -1,6 +1,8 @@
+import 'package:alpha/pantalla2.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -82,6 +84,12 @@ void getPersonas() async {
         ),
 
         ),
+      floatingActionButton: FloatingActionButton.extended(
+          onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context)=> pantalla2()));
+          }, label: Text("Siguiente"),
+          icon: Icon(Icons.arrow_forward),
+      ),
       );
 
   }
