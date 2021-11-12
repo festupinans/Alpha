@@ -1,10 +1,13 @@
+import 'package:alpha/pantalla3.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class pantalla2 extends StatelessWidget {
-  const pantalla2({Key? key}) : super(key: key);
+  //const pantalla2({Key? key}) : super(key: key);
 
+TextEditingController dato= TextEditingController();  
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,12 +19,17 @@ class pantalla2 extends StatelessWidget {
         children: [
           Container(
             child:
-            TextField(),
+            TextField(controller: dato,),
           ),
 
           Container(
-            child: ElevatedButton(onPressed: (){},child: Text('Consultar'),),
-          )
+            child: ElevatedButton(onPressed: (){
+              print(dato.text);
+              Navigator.push(context, MaterialPageRoute(builder: (context)=> pantalla3(dato.text)));
+            },child: Text('Consultar'),),
+          ),
+
+
         ],
       ),
     );
