@@ -9,7 +9,6 @@ void main() {
   Firebase.initializeApp().then((value) {
     runApp(const MyApp());
   });
-
 }
 
 class MyApp extends StatelessWidget {
@@ -49,7 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
 void getPersonas() async {
-    CollectionReference datos= FirebaseFirestore.instance.collection('Personas'); //Conecta a la conexion
+    CollectionReference datos= FirebaseFirestore.instance.collection('People'); //Conecta a la conexion
   QuerySnapshot personas= await datos.get(); //Traer todas las personas
   if(personas.docs.length>0){
     print('Trae datos');

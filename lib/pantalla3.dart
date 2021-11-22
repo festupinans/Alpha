@@ -12,7 +12,8 @@ class pantalla3 extends StatefulWidget {
 
 class _pantalla3State extends State<pantalla3> {
 
-  List pers=[];
+  List gustosLista=[];
+  List personasLista=[];
 
   void initState(){
     super.initState();
@@ -20,15 +21,35 @@ class _pantalla3State extends State<pantalla3> {
   }
 
   void getCriterio()async{
-  CollectionReference datos = FirebaseFirestore.instance.collection('Personas');
-  QuerySnapshot personas2= await datos.where('apellido', isEqualTo: widget.criterio).get();
-  if(personas2.docs.length!=0){
-    for(var per in personas2.docs){
+    String cri=widget.criterio;
+    print(cri);
+  CollectionReference info = FirebaseFirestore.instance.collection('Likes');
+  QuerySnapshot gustos= await info.where('nombre', isEqualTo: cri).get();
+  if(gustos.docs.length!=0){
+    for(var per in gustos.docs){
       print(per.data());
       setState(() {
-        pers.add(per);
+        gustosLista.add(per);
       }
       );
+    }
+  }else{
+    print("no se como resolver este fallo (por ahora), puta vida ");
+  }
+    String id;
+    CollectionReference datos2 = FirebaseFirestore.instance.collection("People");
+  for(var i=0;i<gustosLista.length;i++){
+    id=gustosLista[i]["persona"];
+    QuerySnapshot personas= await datos2.where(FieldPath.documentId, isEqualTo: id).get();
+    if(personas.docs.length>0){
+      for(var pers in personas.docs){
+        setState(() {
+          personasLista.add(pers.data());
+          print(pers.data());
+        });
+
+      }
+    }else{print("no hay personas con ese gusto");
     }
   }
   } 
@@ -38,19 +59,84 @@ class _pantalla3State extends State<pantalla3> {
     return Scaffold(
       appBar: AppBar(
         title: Text('pantalla3'),
-
       ),
-      body: Center(
-        child: ListView.builder(
-            itemCount: pers.length,
-            itemBuilder: (BuildContext context, i){
+
+      body: Center(/*ListView(
+        children:[
+          ListView.builder(
+          itemCount: gustosLista.length,
+          itemBuilder: (BuildContext context, i){
+            return Container(
+              child: Text(gustosLista[i]['nombre']+' '+gustosLista[i]['descripcion']+' '+gustosLista[i]['persona']),
+
+            );
+
+          },
+
+        ),*/
+          child: ListView.builder(
+            itemCount: personasLista.length,
+            itemBuilder: (BuildContext context, j){
               return Container(
-              child: Text(pers[i]['nombre']+' '+pers[i]['apellido']),
+                child:  miCardImage(url: personasLista[j]["foto"], texto: personasLista[j]["nombre"]+" "+personasLista[j]["apellido"] +"\n"+ personasLista[j]["correo"])
               );
-      },
-
-      ),
+            },
+          )
     ),
+    );
+  }
+}
+
+
+
+class boton extends StatefulWidget {
+
+  @override
+  _botonState createState() => _botonState();
+}
+
+class _botonState extends State<boton> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: ElevatedButton(onPressed: (){
+
+      },child:
+      Text('Consultar'),
+          style: ElevatedButton.styleFrom(
+              primary: Colors.cyan)
+      ),
+    );
+  }
+}
+
+
+class miCardImage extends StatelessWidget {
+  final String url;
+  final String texto;
+
+  const miCardImage({required this.url, required this.texto});
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      shape: RoundedRectangleBorder(borderRadius:  BorderRadius.circular(35)),
+      margin: EdgeInsets.all(20),
+      elevation: 10,
+      color: Colors.pink,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(35),
+        child: Column(
+          children: [
+            Image.network(url),
+            Container(
+              padding: EdgeInsets.all(10),
+              color: Colors.cyan,
+              child: Text(texto,style: TextStyle(fontSize: 20, color: Colors.white), textAlign: TextAlign.center),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

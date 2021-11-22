@@ -26,10 +26,9 @@ TextEditingController dato= TextEditingController();
             child: ElevatedButton(onPressed: (){
               print(dato.text);
               Navigator.push(context, MaterialPageRoute(builder: (context)=> pantalla3(dato.text)));
-            },child: Text('Consultar'),),
+            },child: Text('Consultar'),
+            ),
           ),
-
-
         ],
       ),
     );
