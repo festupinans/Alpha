@@ -61,7 +61,17 @@ class _pantalla3State extends State<pantalla3> {
         title: Text('pantalla3'),
       ),
 
-      body: Center(/*ListView(
+      body: ListView.builder(
+        itemCount: personasLista.length,
+        itemBuilder: (BuildContext context, j){
+          return ListTile(
+            onTap: ,
+              title:  miCardImage(url: personasLista[j]["foto"], texto: personasLista[j]["nombre"]+" "+personasLista[j]["apellido"] +"\n"+ personasLista[j]["correo"])
+          );
+        },
+      )
+
+      /*ListView(
         children:[
           ListView.builder(
           itemCount: gustosLista.length,
@@ -74,15 +84,8 @@ class _pantalla3State extends State<pantalla3> {
           },
 
         ),*/
-          child: ListView.builder(
-            itemCount: personasLista.length,
-            itemBuilder: (BuildContext context, j){
-              return Container(
-                child:  miCardImage(url: personasLista[j]["foto"], texto: personasLista[j]["nombre"]+" "+personasLista[j]["apellido"] +"\n"+ personasLista[j]["correo"])
-              );
-            },
-          )
-    ),
+
+
     );
   }
 }
