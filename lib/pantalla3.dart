@@ -1,3 +1,4 @@
+import 'package:alpha/pantalla4.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -65,7 +66,11 @@ class _pantalla3State extends State<pantalla3> {
         itemCount: personasLista.length,
         itemBuilder: (BuildContext context, j){
           return ListTile(
-            onTap: ,
+            onTap: (){
+              print(personasLista[j]);
+              datosPersonas p = datosPersonas(personasLista[j]['nombre'], personasLista[j]['apellido'], personasLista[j]['correo'], personasLista[j]['foto'], personasLista[j]['edad'], personasLista[j]['web']);
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>pantalla4(persona: p)));
+            },
               title:  miCardImage(url: personasLista[j]["foto"], texto: personasLista[j]["nombre"]+" "+personasLista[j]["apellido"] +"\n"+ personasLista[j]["correo"])
           );
         },
@@ -141,5 +146,26 @@ class miCardImage extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+
+class datosPersonas{
+  String nombre='';
+  String apellido='';
+  String correo='';
+  String foto='';
+  int edad=0;
+  String web='';
+
+
+
+  datosPersonas(nombre,apellido,correo,foto,edad,web){
+    this.nombre=nombre;
+    this.apellido=apellido;
+    this.correo=correo;
+    this.foto=foto;
+    this.edad=edad;
+    this.web=web;
   }
 }

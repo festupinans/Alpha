@@ -1,4 +1,6 @@
+import 'package:alpha/comprobarCliente.dart';
 import 'package:alpha/pantalla2.dart';
+import 'package:alpha/registroClientes.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -71,6 +73,7 @@ void getPersonas() async {
 
         title: Text('Listado de personas'),
       ),
+      drawer: menu(),
       body: Center(
 
         child: ListView.builder(
@@ -91,5 +94,49 @@ void getPersonas() async {
       ),
       );
 
+  }
+}
+
+class menu extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: [
+          DrawerHeader(
+            decoration: BoxDecoration(color: Colors.pink),
+              child: Image.network('https://github.com/festupinans/equipo2_grupo15/blob/master/lib/Imagenes/TuMI.png?raw=true')
+          ),
+          Column(
+            children: [
+              ListTile(
+                leading: Icon(Icons.search, size: 30, color: Colors.pink),
+                title: Text('Consultar Personas'),
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>pantalla2()));
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.update , size: 30, color: Colors.pink),
+                title: Text('Actualizar Datos'),
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>comprobarCliente()));
+                },
+              ),
+              ListTile(
+                trailing: Icon(Icons.person_add , size: 30, color: Colors.pink),
+                enabled: true,
+                title: Text('Registrar Personas'),
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>registroClientes()));
+                },
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
   }
 }
