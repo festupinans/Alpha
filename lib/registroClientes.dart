@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+import 'main.dart';
+
 
 class registroClientes extends StatefulWidget {
   const registroClientes({Key? key}) : super(key: key);
@@ -36,6 +38,7 @@ class _registroClientesState extends State<registroClientes> {
       appBar: AppBar(
         title: Text("Registro de clientes"),
       ),
+      drawer: menu(),
       body: ListView(
         children: [
           Container(

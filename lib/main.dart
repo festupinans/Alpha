@@ -1,4 +1,5 @@
 import 'package:alpha/comprobarCliente.dart';
+import 'package:alpha/moduloPedido.dart';
 import 'package:alpha/pantalla2.dart';
 import 'package:alpha/registroClientes.dart';
 import 'package:flutter/material.dart';
@@ -131,6 +132,14 @@ class menu extends StatelessWidget {
                 title: Text('Registrar Personas'),
                 onTap: (){
                   Navigator.push(context, MaterialPageRoute(builder: (context)=>registroClientes()));
+                },
+              ),
+              ListTile(
+                trailing: Icon(Icons.person_add , size: 30, color: Colors.pink),
+                enabled: true,
+                title: Text('Registrar Pedido'),
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>moduloCliente()));
                 },
               ),
             ],

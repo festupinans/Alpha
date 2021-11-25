@@ -3,6 +3,8 @@ import 'package:alpha/registroClientes.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import 'main.dart';
+
 class pantalla4 extends StatelessWidget {
 
   final datosPersonas persona;
@@ -14,6 +16,7 @@ class pantalla4 extends StatelessWidget {
       appBar: AppBar(
         title: Text('Datos: '+persona.nombre+" "+persona.apellido),
       ),
+      drawer: menu(),
       body: ListView(
         children: [
           miCardImage(url: persona.foto, texto: persona.nombre+" "+persona.apellido),

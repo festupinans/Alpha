@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import 'main.dart';
+
 class pantalla3 extends StatefulWidget {
   final String criterio;
   const pantalla3(this.criterio,{Key? key}) : super(key: key);
@@ -61,6 +63,7 @@ class _pantalla3State extends State<pantalla3> {
       appBar: AppBar(
         title: Text('pantalla3'),
       ),
+        drawer: menu(),
 
       body: ListView.builder(
         itemCount: personasLista.length,

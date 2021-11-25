@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import 'main.dart';
+
 class pantalla2 extends StatelessWidget {
   //const pantalla2({Key? key}) : super(key: key);
 
@@ -15,6 +17,7 @@ TextEditingController dato= TextEditingController();
         title: Text('pantalla2'),
 
       ),
+      drawer: menu(),
       body: Column(
         children: [
           Container(

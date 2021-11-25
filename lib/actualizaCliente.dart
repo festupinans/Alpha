@@ -1,6 +1,8 @@
 import 'package:alpha/comprobarCliente.dart';
 import 'package:flutter/material.dart';
 
+import 'main.dart';
+
 class actualizarCliente extends StatefulWidget {
   final datosClientes cliente;
 
@@ -32,6 +34,7 @@ class _actualizarClienteState extends State<actualizarCliente> {
       appBar: AppBar(
         title: Text('Actualizar Datos: ' + widget.cliente.nombre),
       ),
+      drawer: menu(),
       body: ListView(
         children: [
 
