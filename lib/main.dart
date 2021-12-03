@@ -108,7 +108,7 @@ class menu extends StatelessWidget {
         children: [
           DrawerHeader(
             decoration: BoxDecoration(color: Colors.pink),
-              child: Image.network('https://github.com/festupinans/equipo2_grupo15/blob/master/lib/Imagenes/TuMI.png?raw=true')
+              child: Image.network('https://github.com/festupinans/equipo2_grupo15/blob/master/lib/Imagenes/TuMI.png?raw=true'),
           ),
           Column(
             children: [

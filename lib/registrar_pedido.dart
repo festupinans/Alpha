@@ -94,7 +94,7 @@ class _registrarPedidoState extends State<registrarPedido> {
                   can.text='0';
                 }
                 
-                int total= int.parse(can.text)*(int.parse(listaCursos[i]['precio'].toString()));
+                int total= int.parse(can.text)*(int.parse(listaCursos[i]['precio']));
 
                 datosPedido p = datosPedido(codigoGustos[i], listaCursos[i]['nombre'], listaCursos[i]['descripcion'], listaCursos[i]['precio'].toString(), int.parse(can.text), total);
 
