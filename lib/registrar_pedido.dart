@@ -1,4 +1,4 @@
-import 'package:alpha/carritoCompra.dart';
+import 'package:alpha/carrito_compra.dart';
 import 'package:alpha/main.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';

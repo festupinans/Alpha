@@ -1,4 +1,5 @@
 import 'package:alpha/comprobarCliente.dart';
+import 'package:alpha/mensaje.dart';
 import 'package:alpha/moduloPedido.dart';
 import 'package:alpha/pantalla2.dart';
 import 'package:alpha/registroClientes.dart';
@@ -140,6 +141,14 @@ class menu extends StatelessWidget {
                 title: Text('Registrar Pedido'),
                 onTap: (){
                   Navigator.push(context, MaterialPageRoute(builder: (context)=>moduloCliente()));
+                },
+              ),
+              ListTile(
+                trailing: Icon(Icons.email , size: 30, color: Colors.pink),
+                enabled: true,
+                title: Text('Notificaciones'),
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>mensaje()));
                 },
               ),
             ],

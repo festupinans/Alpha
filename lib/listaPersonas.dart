@@ -2,7 +2,7 @@
 
 import 'package:alpha/actualizaCliente.dart';
 import 'package:alpha/pantalla3.dart';
-import 'package:alpha/registrarPedido.dart';
+import 'package:alpha/registrar_pedido.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
